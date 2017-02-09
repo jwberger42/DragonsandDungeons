@@ -13,14 +13,14 @@ public class MapReader {
     public static void loadMap(String filename)
     {
         mapDir = Main.dir + "\\map\\" + filename + "\\map_config.txt";
-            List<String> records = new ArrayList<>();
+            List<String> mapLength = new ArrayList<>();
             try
             {
                 BufferedReader reader = new BufferedReader(new FileReader(mapDir));
                 String line;
                 while ((line = reader.readLine()) != null)
                 {
-                    records.add(line);
+                    mapLength.add(line);
                 }
                 reader.close();
             }
@@ -29,6 +29,11 @@ public class MapReader {
                 System.err.format("Exception occurred trying to read '%s'.", filename);
                 e.printStackTrace();
             }
-        System.out.println(records.size());
+        System.out.println(mapLength.size());
+        for (String i : mapLength) {
+
+        }
+
+
     }
 }
