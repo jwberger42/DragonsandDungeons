@@ -6,9 +6,11 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
-
+	protected static String dir;
 	public static void main(String[] args) {
-		launch(args);
+	    dir = System.getProperty("user.dir");
+	    System.out.println("Dir is: " + dir);
+		//launch(args);
 	}
 
 	public void start(Stage dndStage) throws Exception {

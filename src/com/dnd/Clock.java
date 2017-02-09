@@ -1,7 +1,7 @@
-package com.dnd;
+/*package com.dnd;
 
 //test in eclipse ver 1.0 note code is unfinished
-import java.util.scanner;
+import java.util.Scanner;
 
 public class Clock
 {
@@ -11,7 +11,7 @@ private static int worldClock = 0;
 public static Scanner userin = new Scanner(System.in);
 /**
 *Constructor for class Clock
-*/
+
 
 public Clock()
 {
@@ -19,7 +19,7 @@ public Clock()
 
 public static void loop();
 {
-doStuff;
+//doStuff;
 }
 
 public static void main(String[] args)
@@ -36,5 +36,6 @@ if (test.contains("wait"))
 worldClock = worldClock + 100;
 System.out.println(worldClock);
 }
-}
+}}
 
+*/
