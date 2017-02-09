@@ -6,13 +6,17 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
-	protected static String dir;
+	static String dir;
 	public static void main(String[] args) {
 	    dir = System.getProperty("user.dir");
 	    System.out.println("Dir is: " + dir);
+		start_up_load_file();
 		//launch(args);
 	}
-
+	public static void start_up_load_file()
+	{
+		com.dnd.MapReader.loadMap("testMap");
+	}
 	public void start(Stage dndStage) throws Exception {
 		// TODO Auto-generated method stub
 		dndStage.setTitle("DND");
