@@ -6,14 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by John on 2017-02-08.
+ * Created by John on 2017-02-08. Hi!
  */
-public class MapReader {
-    private static String mapDir;
-    private static int counter = 0;
-    public static void loadMap(String filename)
+class MapReader {
+    static void loadMap(String filename)
     {
-        mapDir = Main.dir + "\\map\\" + filename + "\\map_config.txt";
+        String mapDir = Main.dir + "\\map\\" + filename + "\\map_config.txt";
             List<String> mapLength = new ArrayList<>();
             try
             {
@@ -30,7 +28,7 @@ public class MapReader {
                 System.err.format("Exception occurred trying to read '%s'.", filename);
                 e.printStackTrace();
             }
-            counter = 0;
+        int counter = 0;
         for (String i : mapLength)
         {
             switch(counter)
@@ -49,8 +47,7 @@ public class MapReader {
                     for (String o : s)
                     {
                         System.out.println(o);
-                        String test = o;
-                        Main.loadedItems.add(count,test);
+                        Main.loadedItems.add(count, o);
                         count++;
                     }
                     break;
@@ -59,11 +56,5 @@ public class MapReader {
             }
             counter++;
         }
-
-
-    }
-    public static void bufferObjects(String fileName)
-    {
-
     }
 }

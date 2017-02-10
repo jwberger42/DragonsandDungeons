@@ -13,22 +13,29 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class Main extends Application {
-    public static String dir;
-    public Label label;
-    public static int difficultyModifier;
-    public static int mapBoundsX;
-    public static int mapBoundsY;
-    public static ArrayList<String> loadedItems = new ArrayList<>();
+
+    static String dir;
+    private Label label;
+    static int difficultyModifier;
+    static int mapBoundsX;
+    static int mapBoundsY;
+    static ArrayList<String> loadedItems = new ArrayList<>();
+    private static ObservableList<String> allItems;
+
+    static {
+        allItems = FXCollections.observableArrayList();
+    }
+
     public static void main(String[] args) {
         dir = System.getProperty("user.dir");
         System.out.println("Dir is: " + dir);
         start_up_load_file();
-        //launch(args);
+        launch(args);
     }
 
-    public static void start_up_load_file() {
-        com.dnd.MapReader.loadMap("testMap");
-        com.dnd.MapReader.bufferObjects("testMap");
+    private static void start_up_load_file() {
+        String defaultFile = "testMap";
+        com.dnd.MapReader.loadMap(defaultFile);
     }
 
     public void start(Stage dndStage) throws Exception {
@@ -38,19 +45,16 @@ public class Main extends Application {
         Scene dndScene = new Scene(rootNode, 1000, 1000);
         dndStage.setScene(dndScene);
         dndStage.show();
-        ObservableList<String> allItems = FXCollections.observableArrayList();
+        label = new Label("click");
         //ObservableList<String> seeItems = FXCollections.observableArrayList();
         for(String q : loadedItems)
         {
             allItems.add(q);
         }
-        ListView<String> availItems;
-        availItems = new ListView<>(allItems);
+        ListView<String> availItems = new ListView<>(allItems);
         availItems.setPrefSize(300, 600);
         availItems.getSelectionModel().selectedItemProperty().addListener(
-                (ObservableValue<? extends String> ov, String old_val, String new_val) -> {
-                    label.setText(new_val);
-                });
-        rootNode.getChildren().addAll(label,availItems);
+                (ObservableValue<? extends String> ov, String old_val, String new_val) -> label.setText(new_val));
+        rootNode.getChildren().addAll(label, availItems);
     }
 }
