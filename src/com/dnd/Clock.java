@@ -1,25 +1,20 @@
-/*package com.dnd;
+package com.dnd;
 
-//test in eclipse ver 1.0 note code is unfinished
 import java.util.Scanner;
-
+//Needs to be set in window format once I figure out how.
 public class Clock
-{
-//this is the defined value for the twenty four hour clock
+{ 
 private static int worldClock = 0;
-//Scanner code
-public static Scanner userin = new Scanner(System.in);
-/**
-*Constructor for class Clock
 
+public static Scanner userin = new Scanner(System.in);
 
 public Clock()
 {
 }
 
-public static void loop();
+public static void loop()
 {
-//doStuff;
+doStuff();
 }
 
 public static void main(String[] args)
@@ -30,12 +25,16 @@ loop();
 public static void doStuff()
 {
 String test = userin.next();
-//Code to detect values.
 if (test.contains("wait"))
 {
-worldClock = worldClock + 100;
+worldClock = worldClock + 600;
 System.out.println(worldClock);
 }
-}}
 
-*/
+if (worldClock == 2400)
+{
+worldClock = worldClock - 2400;
+}
+loop();
+}
+}
