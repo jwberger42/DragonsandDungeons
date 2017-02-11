@@ -19,7 +19,7 @@ doStuff();
 
 public static void main(String[] args)
 {
-loop();
+    loop();
 }
 
 public static void doStuff()

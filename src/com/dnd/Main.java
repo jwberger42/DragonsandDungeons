@@ -20,6 +20,7 @@ public class Main extends Application {
     static int mapBoundsX;
     static int mapBoundsY;
     static ArrayList<String> loadedItems = new ArrayList<>();
+    static ArrayList<String> loadedEnemies = new ArrayList<>();
     private static ObservableList<String> allItems;
 
     static {
@@ -30,12 +31,18 @@ public class Main extends Application {
         dir = System.getProperty("user.dir");
         System.out.println("Dir is: " + dir);
         start_up_load_file();
-        launch(args);
+        clear_loaded_level();
+        //launch(args);
     }
 
     private static void start_up_load_file() {
         String defaultFile = "testMap";
         com.dnd.MapReader.loadMap(defaultFile);
+    }
+    private static void clear_loaded_level()
+    {
+        allItems.clear();
+        loadedEnemies.clear();
     }
 
     public void start(Stage dndStage) throws Exception {
