@@ -1,0 +1,6 @@
+healerH = 13;
+healerI = 3;
+healerS = 2;
+healerA = 2;
+healerM = 9;
+healerSp = 1;
