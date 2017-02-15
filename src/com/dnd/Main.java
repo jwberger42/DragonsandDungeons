@@ -28,8 +28,7 @@ public class Main extends Application {
     //static ArrayList<String> loadedNpcs = new ArrayList<>();
     private static ObservableList<String> allItems;
     private static Image map;
-    private static ImageView mapView;
-    private static File mapImg;
+    private static ImageView mapView;    private static File mapImg;
 
     static {
         allItems = FXCollections.observableArrayList();
@@ -46,7 +45,7 @@ public class Main extends Application {
     private static void start_up_load_file() {
         String defaultFile = "testMap";
         com.dnd.MapReader.loadMap(defaultFile);
-        mapImg = new File("map/testMap/testMap.jpg");
+        mapImg = new File("map/" + defaultFile + "/map_img.jpg");
     }
     private static void clear_loaded_level()
     {
