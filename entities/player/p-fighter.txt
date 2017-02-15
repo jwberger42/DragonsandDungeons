@@ -1,0 +1,6 @@
+fighterH = 10;
+fighterI = 1;
+fighterS = 5;
+fighterA = 2;
+fighterM = 3;
+fighterSp = 2;

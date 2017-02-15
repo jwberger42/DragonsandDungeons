@@ -1,0 +1,6 @@
+rangeH = 9;
+rangeI = 2;
+rangeS = 3;
+rangeA = 5;
+rangeM = 5;
+rangeSp = 3;

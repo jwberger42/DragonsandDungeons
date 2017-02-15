@@ -1,0 +1,6 @@
+mageH = 7;
+mageI = 5;
+mageS = 1;
+mageA = 1;
+mageM = 12;
+mageSp = 3;

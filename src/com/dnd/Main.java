@@ -7,9 +7,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -20,8 +23,12 @@ public class Main extends Application {
     static int mapBoundsX;
     static int mapBoundsY;
     static ArrayList<String> loadedItems = new ArrayList<>();
-    static ArrayList<String> loadedEnemies = new ArrayList<>();
+    private static ArrayList<String> loadedEnemies = new ArrayList<>();
+    //static ArrayList<String> loadedAllies = new ArrayList<>();
+    //static ArrayList<String> loadedNpcs = new ArrayList<>();
     private static ObservableList<String> allItems;
+    private static Image map;
+    private static ImageView mapView;    private static File mapImg;
 
     static {
         allItems = FXCollections.observableArrayList();
@@ -29,15 +36,16 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         dir = System.getProperty("user.dir");
-        System.out.println("Dir is: " + dir);
+        //System.out.println("Dir is: " + dir);
         start_up_load_file();
-        clear_loaded_level();
-        //launch(args);
+        //clear_loaded_level();
+        launch(args);
     }
 
     private static void start_up_load_file() {
         String defaultFile = "testMap";
         com.dnd.MapReader.loadMap(defaultFile);
+        mapImg = new File("map/" + defaultFile + "/map_img.jpg");
     }
     private static void clear_loaded_level()
     {
@@ -62,6 +70,12 @@ public class Main extends Application {
         availItems.setPrefSize(300, 600);
         availItems.getSelectionModel().selectedItemProperty().addListener(
                 (ObservableValue<? extends String> ov, String old_val, String new_val) -> label.setText(new_val));
-        rootNode.getChildren().addAll(label, availItems);
+        map = new Image(mapImg.toURI().toString());
+        mapView = new ImageView();
+        mapView.setImage(map);
+        mapView.setSmooth(true);
+        mapView.setCache(true);
+        rootNode.getChildren().addAll(/*label, availItems*/mapView);
+
     }
 }
