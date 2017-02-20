@@ -1,6 +1,7 @@
 package com.dnd;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,16 @@ class MapReader {
                     break;
             }
             counter++;
+        }
+    }
+    public static void loadCurrentMapComponent(String filename)
+    {
+        String mapDir = Main.dir + "\\map\\" + filename + "\\mapAreas";
+        File mapCompList = new File(mapDir);
+        File[] mapList = mapCompList.listFiles();
+        for (File i : mapList)
+        {
+            System.out.println(i.toString());
         }
     }
 }

@@ -45,13 +45,14 @@ public class Main extends Application {
         //System.out.println("Dir is: " + dir);
         start_up_load_file();
         //clear_loaded_level();
-        launch(args);
+        //launch(args);
     }
 
     private static void start_up_load_file() {
         String defaultFile = "testMap";
         com.dnd.MapReader.loadMap(defaultFile);
-        mapImg = new File("map/" + defaultFile + "/map_img.jpg");
+        com.dnd.Map.generateMap();
+        //mapImg = new File("map/" + defaultFile + "/map_img.jpg");
     }
     private static void clear_loaded_level()
     {
@@ -85,7 +86,7 @@ public class Main extends Application {
         input.setPromptText("Enter your input here");
         input.setEditable(true);
         output = new ArrayList<String>();
-        rootNode.getChildren().addAll(/*label, availItems*/mapView,input,output);
+        rootNode.getChildren().addAll(/*label, availItems*/mapView,input/*,output*/);
         input.setOnAction(event -> {
             output.add(input.getText());
             input.selectAll();
