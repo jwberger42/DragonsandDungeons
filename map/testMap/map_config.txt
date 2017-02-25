@@ -1,4 +1,5 @@
 1
 60;30
 Sword:5,4;Torch:30,29
-Goblin:20,20;
+Goblin:20,20
+8

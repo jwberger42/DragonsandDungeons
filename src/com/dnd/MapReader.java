@@ -1,8 +1,6 @@
 package com.dnd;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +8,7 @@ import java.util.List;
  * Created by John on 2017-02-08. Hi!
  */
 class MapReader {
-    static void loadMap(String filename)
-    {
+    static void loadMap(String filename) throws IOException {
         String mapDir = Main.dir + "\\map\\" + filename + "\\map_config.txt";
             List<String> mapLength = new ArrayList<>();
             try
@@ -54,6 +51,9 @@ class MapReader {
                     break;
                 case 3:
                     break;
+                case 4:
+                    loadAllCoords(10,filename);
+                    break;
             }
             counter++;
         }
@@ -66,6 +66,17 @@ class MapReader {
         for (File i : mapList)
         {
             System.out.println(i.toString());
+        }
+    }
+    public static void loadAllCoords(int numberOfFiles, String fileName) throws IOException {
+        for(int i = 1;i < numberOfFiles;i++)
+        {
+            BufferedReader fileSizer = new BufferedReader(new FileReader(Main.dir + "\\map\\" + fileName + "\\mapAreas\\" + "a" + i + ".txt"));
+            String linNum;
+            while((linNum = fileSizer.readLine()) != null)
+            {
+                System.out.println(linNum);
+            }
         }
     }
 }

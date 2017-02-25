@@ -16,6 +16,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -40,7 +41,7 @@ public class Main extends Application {
         allItems = FXCollections.observableArrayList();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         dir = System.getProperty("user.dir");
         //System.out.println("Dir is: " + dir);
         start_up_load_file();
@@ -48,10 +49,10 @@ public class Main extends Application {
         //launch(args);
     }
 
-    private static void start_up_load_file() {
+    private static void start_up_load_file() throws IOException {
         String defaultFile = "testMap";
         com.dnd.MapReader.loadMap(defaultFile);
-        com.dnd.Map.generateMap();
+        //om.dnd.Map.generateMap();
         //mapImg = new File("map/" + defaultFile + "/map_img.jpg");
     }
     private static void clear_loaded_level()
