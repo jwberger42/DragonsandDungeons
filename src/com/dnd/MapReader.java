@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dnd.Map.startCoords;
+
 /**
  * Created by John on 2017-02-08. Hi!
  */
@@ -52,7 +54,7 @@ class MapReader {
                 case 3:
                     break;
                 case 4:
-                    loadAllCoords(10,filename);
+                    loadAllCoords(1,filename);
                     break;
             }
             counter++;
@@ -68,14 +70,23 @@ class MapReader {
             System.out.println(i.toString());
         }
     }
-    public static void loadAllCoords(int numberOfFiles, String fileName) throws IOException {
-        for(int i = 1;i < numberOfFiles;i++)
-        {
-            BufferedReader fileSizer = new BufferedReader(new FileReader(Main.dir + "\\map\\" + fileName + "\\mapAreas\\" + "a" + i + ".txt"));
-            String linNum;
-            while((linNum = fileSizer.readLine()) != null)
+    public static void loadAllCoords(int curFileNum, String fileName) throws IOException {
+        BufferedReader fileSizer = new BufferedReader(new FileReader(Main.dir + "\\map\\" + fileName + "\\mapAreas\\" + "a" + curFileNum + ".txt"));
+        String linNum;
+        for (int i = 0;i < 2;i++) {
+            switch(i)
             {
-                System.out.println(linNum);
+                case 0:
+                    Map.areaName = fileSizer.readLine();
+
+                    break;
+                case 1:
+                    for(String o : fileSizer.readLine().split(":"))
+                    {
+                        startCoords.add(o);
+                        Map.generateAllCoords();
+                    }
+                    break;
             }
         }
     }
