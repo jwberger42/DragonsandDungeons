@@ -84,8 +84,8 @@ class MapReader {
                     for(String o : fileSizer.readLine().split(":"))
                     {
                         startCoords.add(o);
-                        Map.generateAllCoords();
                     }
+                    Map.generateAllCoords();
                     break;
             }
         }
