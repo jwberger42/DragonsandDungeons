@@ -1,0 +1,6 @@
+H = Health
+I = Intelligence
+S = Strength
+A = Accuracy
+M = Magic
+Sp = Speed

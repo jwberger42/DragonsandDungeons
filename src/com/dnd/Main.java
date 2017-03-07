@@ -4,15 +4,19 @@ import javafx.application.Application;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -28,24 +32,28 @@ public class Main extends Application {
     //static ArrayList<String> loadedNpcs = new ArrayList<>();
     private static ObservableList<String> allItems;
     private static Image map;
-    private static ImageView mapView;    private static File mapImg;
+    private static ImageView mapView;
+    private static File mapImg;
+    public static TextField input;
+    public static ArrayList<String> output;
 
     static {
         allItems = FXCollections.observableArrayList();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         dir = System.getProperty("user.dir");
         //System.out.println("Dir is: " + dir);
         start_up_load_file();
         //clear_loaded_level();
-        launch(args);
+        //launch(args);
     }
 
-    private static void start_up_load_file() {
+    private static void start_up_load_file() throws IOException {
         String defaultFile = "testMap";
         com.dnd.MapReader.loadMap(defaultFile);
-        mapImg = new File("map/" + defaultFile + "/map_img.jpg");
+        //om.dnd.Map.generateMap();
+        //mapImg = new File("map/" + defaultFile + "/map_img.jpg");
     }
     private static void clear_loaded_level()
     {
@@ -75,7 +83,14 @@ public class Main extends Application {
         mapView.setImage(map);
         mapView.setSmooth(true);
         mapView.setCache(true);
-        rootNode.getChildren().addAll(/*label, availItems*/mapView);
-
+        input = new TextField();
+        input.setPromptText("Enter your input here");
+        input.setEditable(true);
+        output = new ArrayList<String>();
+        rootNode.getChildren().addAll(/*label, availItems*/mapView,input/*,output*/);
+        input.setOnAction(event -> {
+            output.add(input.getText());
+            input.selectAll();
+        });
     }
 }
