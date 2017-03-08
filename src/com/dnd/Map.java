@@ -18,6 +18,7 @@ public class Map {
     public static List<String> allY = new ArrayList<>();
     private static int counter = 0;
     public static  String[][] fullCoordMap;
+    public static List<List<String>> completeCoordMap = new ArrayList<>();
     public static void generateAllCoords()
     {
         System.out.println("You are in: " + areaName);
@@ -35,20 +36,26 @@ public class Map {
             int y2 = Integer.parseInt(isolatedCoords2[1]);
             System.out.println(y2);
             counter++;
-            fullCoordMap = new String[x2-x1][y2-y1];
-            for (int w = 0; w < fullCoordMap.length; w++) {
-                for (int j = 0; j < fullCoordMap[w].length; j++) {
+            fullCoordMap = new String[x2][y2];
+            for (int w = x1; w < fullCoordMap.length; w++) {
+                for (int j = y1; j < fullCoordMap[w].length; j++) {
                     fullCoordMap[w][j] = String.valueOf(w) + "," + String.valueOf(j);
                 }
             }
+            //completeCoordMap.add(fullCoordMap);
+            //System.out.println(completeCoordMap);
             for (String[] a : fullCoordMap) {
                 for (String u : a) {
                     System.out.print(u + "\t");
+                   // completeCoordMap.add(new ArrayList<>());
                 }
                 System.out.println("\n");
             }
-
+            if (!false) {
+                System.out.println("IT CONTAINS IT");
+            } else {
+                System.out.println("IT NOT CONTAIN");
+            }
         }
-
     }
 }
